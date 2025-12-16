@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onice Technologies | IT Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="images/onice-icon.svg">
+  <meta name="description" content="Professional IT solutions from South Africa. Linux server management, web development, cloud services, and IT support world-wide." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    /* Enhanced Base Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #00aefe;
+      --secondary-color: #0066cc;
+      --accent-color: #00ffff;
+      --dark-bg: #0a0a0a;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-light: #e0e0e0;
+      --text-muted: #b0b0b0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+      background: #000;
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #0a0a0a, #001a33, #000d1a, #001f3f);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Loading Screen */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.8s ease;
+    }
+
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-logo {
+      width: 120px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px var(--primary-color));
+      }
+      50% { 
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 40px var(--primary-color));
+      }
+    }
+
+    /* Enhanced Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.8) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 174, 254, 0.1);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 5px 30px rgba(0, 174, 254, 0.3);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary-color) !important;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .navbar-brand img {
+      width: 45px;
+      height: 45px;
+      filter: drop-shadow(0 0 10px var(--primary-color));
+    }
+
+    .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      margin: 0 0.8rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+
+    /* Hero Section */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 100px 20px 80px;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 174, 254, 0.15) 0%, transparent 70%);
+      animation: heroGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-logo {
+      width: 140px;
+      margin-bottom: 2rem;
+      animation: floatLogo 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px var(--primary-color));
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    #hero .lead {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--primary-color);
+      min-height: 60px;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      color: #fff;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-custom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary-custom:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 174, 254, 0.5);
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--primary-color);
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.4);
+    }
+
+    /* Trust Indicators */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .trust-badge {
+      text-align: center;
+    }
+
+    .trust-badge i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .trust-badge h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .trust-badge p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+    }
+
+    /* Glass Card Effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--primary-color), transparent);
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 174, 254, 0.3);
+      border-color: var(--primary-color);
+    }
+
+    .glass-card:hover::before {
+      opacity: 0.3;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .about-card-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .about-card h4 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s ease;
+    }
+
+    .service-card-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-card-image {
+      transform: scale(1.1);
+    }
+
+    .service-card-content {
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .service-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 174, 254, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .portfolio-card-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-card:hover .portfolio-card-image {
+      transform: scale(1.1);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+      padding: 2rem;
+      transform: translateY(60%);
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-overlay {
+      transform: translateY(0);
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: rgba(0, 174, 254, 0.2);
+      color: var(--primary-color);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(0, 174, 254, 0.3);
+    }
+
+    .portfolio-overlay h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-overlay p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Process Section */
+    .process-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: center;
+    }
+
+    .process-step:nth-child(even) .process-content:first-child {
+      order: 3;
+    }
+
+    .process-content {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .process-content:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.2);
+    }
+
+    .process-content h4 {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .process-content p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .process-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.4);
+      position: relative;
+    }
+
+    .process-number::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--primary-color), transparent);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .process-step:last-child .process-number::after {
+      display: none;
+    }
+
+    /* Testimonials Section */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 5rem;
+      color: rgba(0, 174, 254, 0.2);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: 0 20px 60px rgba(0, 174, 254, 0.3);
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 2;
+      margin-top: 2rem;
+    }
+
+    .testimonial-text {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .author-info h5 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .author-info p {
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .rating {
+      color: #ffd700;
+      margin-top: 1rem;
+    }
+
+    /* Technologies Section */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tech-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(20px);
+    }
+
+    .tech-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: 0 15px 40px rgba(0, 174, 254, 0.3);
+    }
+
+    .tech-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .tech-card h5 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--primary-color);
+    }
+
+    .faq-question {
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--primary-color);
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 2rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* Why Choose Section */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .why-card {
+      text-align: center;
+    }
+
+    .why-card-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.3);
+    }
+
+    .why-card h4 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .why-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-text h5 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .contact-info-text p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(0, 174, 254, 0.1);
+      border: 1px solid rgba(0, 174, 254, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--primary-color);
+      color: #000;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 174, 254, 0.4);
+    }
+
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    .map-container iframe {
+      border-radius: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Cookie Consent */
+    #cookie-consent {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      max-width: 450px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 174, 254, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: none;
+    }
+
+    #cookie-consent p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    #cookie-consent .btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .process-step {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .process-step:nth-child(even) .process-content:first-child {
+        order: 1;
+      }
+
+      .process-number::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary-custom,
+      .btn-outline-custom {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .trust-badges {
+        gap: 2rem;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Scroll to top button */
+    #scrollTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 5px 20px rgba(0, 174, 254, 0.4);
+    }
+
+    #scrollTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #scrollTop:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loader">
+    <img src="images/onice-icon.svg" alt="Onice Logo" class="loader-logo" />
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">
+        <img src="images/onice-icon.svg" alt="Logo" />
+        <span>Technologies</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <img src="images/onice-icon.svg" alt="Onice Logo" class="hero-logo" />
+      <h1>ONICE TECHNOLOGIES</h1>
+      <p class="lead" id="typedText"></p>
+      <p class="hero-tagline">
+        Professional IT solutions from South Africa. From Linux server management to custom web development—we transform your technology vision into reality.
+      </p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary-custom">
+          <i class="bi bi-chat-dots me-2"></i>Get Free Consultation
+        </a>
+        <a href="#services" class="btn btn-outline-custom">
+          <i class="bi bi-grid-3x3-gap me-2"></i>View Services
+        </a>
+      </div>
+      
+      <!-- Trust Indicators -->
+      <div class="trust-badges">
+        <div class="trust-badge" data-aos="fade-up" data-aos-delay="100">
+          <i class="bi bi-award-fill"></i>
+          <h4>Certified</h4>
+          <p>Linux Engineer</p>
+        </div>
+        <div class="trust-badge" data-aos="fade-up" data-aos-delay="200">
+          <i class="bi bi-building"></i>
+          <h4>Enterprise</h4>
+          <p>Experience</p>
+        </div>
+        <div class="trust-badge" data-aos="fade-up" data-aos-delay="300">
+          <i class="bi bi-geo-alt-fill"></i>
+          <h4>Local</h4>
+          <p>World-wide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>About Onice Technologies</h2>
+        <p>
+          Founded on principles of innovation, integrity, and excellence—we're your trusted partner for cutting-edge digital solutions in South Africa.
+        </p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="about-card-icon">🎯</div>
+          <h4>Our Vision</h4>
+          <p>
+            To redefine the future through advanced, user-focused technology that inspires progress and innovation across South Africa and beyond.
+          </p>
+        </div>
+        
+        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="about-card-icon">🚀</div>
+          <h4>Our Mission</h4>
+          <p>
+            Building transformative digital solutions that are fast, scalable, and tailored to empower businesses of all sizes to thrive in the digital age.
+          </p>
+        </div>
+        
+        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="about-card-icon">💎</div>
+          <h4>Our Values</h4>
+          <p>
+            Innovation. Integrity. Excellence. Collaboration. We believe in doing great work with purpose, passion, and unwavering commitment to quality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Solutions</h2>
+        <p>Comprehensive IT services tailored to your business needs</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="bi bi-server"></i></div>
+          <img src="images/server.jpeg" alt="Linux Services" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>Linux/Windows Server Management</h3>
+            <p>Enterprise-grade server setup, security hardening, performance optimization, and 24/7 monitoring for Ubuntu, SUSE, and RHEL systems.</p>
+          </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="bi bi-laptop"></i></div>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="Web Development" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>Web Development</h3>
+            <p>Modern, responsive websites that reflect your brand. Custom solutions built with cutting-edge technologies to drive real business results.</p>
+          </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="bi bi-cloud"></i></div>
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop" alt="Cloud Services" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>Cloud Solutions</h3>
+            <p>Seamless cloud migration and management across Azure, Oracle Cloud, and hybrid environments. Scalable infrastructure that grows with you.</p>
+          </div>
+        </div>
+        
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="bi bi-hdd-network"></i></div>
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop" alt="IT Support" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>IT Support & Maintenance</h3>
+            <p>Comprehensive help desk services, system monitoring, security updates, and proactive maintenance to keep your business running smoothly.</p>
+          </div>
+        </div>
+        
+        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon"><i class="bi bi-code-square"></i></div>
+          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&h=300&fit=crop" alt="Custom Software" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>Custom Software Development</h3>
+            <p>Bespoke software solutions designed to fit your unique business processes. From concept to deployment with full documentation.</p>
+          </div>
+        </div>
+        
+        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon"><i class="bi bi-lightbulb"></i></div>
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="IT Consulting" class="service-card-image" />
+          <div class="service-card-content">
+            <h3>IT Consulting & Strategy</h3>
+            <p>Expert insights, infrastructure audits, and strategic planning tailored for growth. Make informed technology decisions with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Portfolio</h2>
+        <p>Showcasing our successful projects and solutions</p>
+      </div>
+      
+      <div class="portfolio-grid">
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=400&fit=crop" alt="E-Commerce Platform" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Web Development</span>
+            <h3>E-Commerce Platform</h3>
+            <p>Full-stack e-commerce solution with payment integration and inventory management for a leading South African retailer.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=400&fit=crop" alt="Enterprise Cloud Migration" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Cloud Solutions</span>
+            <h3>Enterprise Cloud Migration</h3>
+            <p>Successfully migrated 50+ servers to Azure cloud infrastructure with zero downtime for a financial services company.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=500&h=400&fit=crop" alt="Custom CRM System" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Custom Software</span>
+            <h3>Custom CRM System</h3>
+            <p>Developed a tailored CRM solution that increased client engagement by 40% for a telecommunications provider.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=400&fit=crop" alt="Security Infrastructure" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Linux Administration</span>
+            <h3>Security Infrastructure Overhaul</h3>
+            <p>Implemented enterprise-grade security protocols across 100+ Linux servers for a healthcare organization.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=400&fit=crop" alt="Business Website" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Web Development</span>
+            <h3>Corporate Website Redesign</h3>
+            <p>Modern, responsive website with integrated booking system that increased online inquiries by 65%.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-aos="fade-up" data-aos-delay="600">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=500&h=400&fit=crop" alt="IT Consulting Project" class="portfolio-card-image" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">IT Consulting</span>
+            <h3>Digital Transformation Strategy</h3>
+            <p>Comprehensive IT audit and roadmap that reduced operational costs by 30% for a manufacturing company.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Process</h2>
+        <p>A proven methodology that delivers results every time</p>
+      </div>
+      
+      <div class="process-timeline">
+        <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+          <div class="process-content">
+            <h4>Discovery & Consultation</h4>
+            <p>We start by understanding your business, challenges, and goals. Through detailed consultations, we identify opportunities and define clear objectives for your project.</p>
+          </div>
+          <div class="process-number">1</div>
+          <div class="process-content"></div>
+        </div>
+
+        <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+          <div class="process-content"></div>
+          <div class="process-number">2</div>
+          <div class="process-content">
+            <h4>Planning & Strategy</h4>
+            <p>We create a comprehensive project roadmap, select the right technologies, and establish timelines. Every detail is planned to ensure success.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+          <div class="process-content">
+            <h4>Design & Development</h4>
+            <p>Our expert team brings your vision to life with modern design and robust development. We follow best practices and keep you updated at every stage.</p>
+          </div>
+          <div class="process-number">3</div>
+          <div class="process-content"></div>
+        </div>
+
+        <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+          <div class="process-content"></div>
+          <div class="process-number">4</div>
+          <div class="process-content">
+            <h4>Testing & Quality Assurance</h4>
+            <p>Rigorous testing ensures everything works flawlessly. We test for performance, security, and usability across all platforms and scenarios.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+          <div class="process-content">
+            <h4>Deployment & Training</h4>
+            <p>We handle smooth deployment with minimal disruption. Your team receives comprehensive training and documentation to maximize your investment.</p>
+          </div>
+          <div class="process-number">5</div>
+          <div class="process-content"></div>
+        </div>
+
+        <div class="process-step" data-aos="fade-up" data-aos-delay="600">
+          <div class="process-content"></div>
+          <div class="process-number">6</div>
+          <div class="process-content">
+            <h4>Support & Optimization</h4>
+            <p>Our commitment continues after launch. We provide ongoing support, monitor performance, and continuously optimize for better results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+        <p>Trusted by businesses across South Africa</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "Onice Technologies transformed our entire IT infrastructure. Their Linux expertise and professional approach exceeded all expectations. Our systems are now more secure and efficient than ever."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JM</div>
+              <div class="author-info">
+                <h5>John Mthembu</h5>
+                <p>CTO, FinTech Solutions</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "The team built us a stunning website that perfectly captures our brand. The attention to detail and responsiveness to our needs was outstanding. Highly recommend their web development services!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SP</div>
+              <div class="author-info">
+                <h5>Sarah Pieterse</h5>
+                <p>Marketing Director, Retail Group</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "Their cloud migration service was seamless. We moved our entire operation to Azure with zero downtime. The Onice team's expertise and planning made what seemed impossible, effortless."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">DN</div>
+              <div class="author-info">
+                <h5>David Nkosi</h5>
+                <p>IT Manager, Healthcare Provider</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "Professional, knowledgeable, and always available. Onice Technologies provides the kind of IT support that lets us focus on our business instead of worrying about technical issues."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">LV</div>
+              <div class="author-info">
+                <h5>Lisa van der Merwe</h5>
+                <p>CEO, Manufacturing Company</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "The custom software they developed has revolutionized how we manage our operations. It's exactly what we needed, and the ongoing support has been exceptional."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">TP</div>
+              <div class="author-info">
+                <h5>Thabo Pillay</h5>
+                <p>Operations Director, Logistics Firm</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              "Working with Onice was a game-changer. Their strategic IT consulting helped us make smart decisions that have saved us thousands while improving our capabilities."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MK</div>
+              <div class="author-info">
+                <h5>Michelle Khumalo</h5>
+                <p>Owner, SME Business</p>
+              </div>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Section -->
+  <section id="technologies">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Technologies We Use</h2>
+        <p>Leveraging cutting-edge tools and platforms to build robust solutions</p>
+      </div>
+      
+      <div class="tech-grid">
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+          <span class="tech-icon">🐧</span>
+          <h5>Linux</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="150">
+          <span class="tech-icon">☁️</span>
+          <h5>Azure</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="tech-icon">⚛️</span>
+          <h5>React</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="250">
+          <span class="tech-icon">🟢</span>
+          <h5>Node.js</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+          <span class="tech-icon">🐍</span>
+          <h5>Python</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="350">
+          <span class="tech-icon">🐘</span>
+          <h5>PHP</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
+          <span class="tech-icon">🗄️</span>
+          <h5>MySQL</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="450">
+          <span class="tech-icon">🍃</span>
+          <h5>MongoDB</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="500">
+          <span class="tech-icon">🐳</span>
+          <h5>Docker</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="550">
+          <span class="tech-icon">☸️</span>
+          <h5>Kubernetes</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="600">
+          <span class="tech-icon">🔧</span>
+          <h5>Git</h5>
+        </div>
+
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="650">
+          <span class="tech-icon">🪟</span>
+          <h5>Windows Server</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section id="why-choose">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Why Choose Onice Technologies</h2>
+        <p>We bring creativity, care, and commitment to every project</p>
+      </div>
+      
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-card-icon">🚀</div>
+          <h4>Innovative Solutions</h4>
+          <p>We embrace cutting-edge technology and fresh ideas to create unique solutions perfectly tailored to your specific business needs.</p>
+        </div>
+        
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-card-icon">🤝</div>
+          <h4>Client-Centric Approach</h4>
+          <p>Your goals are our priority. We collaborate closely with you throughout every phase to ensure your complete success and satisfaction.</p>
+        </div>
+        
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-card-icon">💡</div>
+          <h4>Expert Team</h4>
+          <p>Linux certified engineers with real enterprise experience. Deep knowledge backed by proven expertise.</p>
+        </div>
+        
+        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-card-icon">⚙️</div>
+          <h4>Reliable Support</h4>
+          <p>We offer ongoing maintenance and dedicated support to keep your technology running smoothly. Always here when you need us.</p>
+        </div>
+        
+        <div class="why-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="why-card-icon">💰</div>
+          <h4>Cost-Effective</h4>
+          <p>Enterprise-grade solutions without enterprise prices. Fair, transparent pricing designed for South Africa SMEs and growing businesses.</p>
+        </div>
+        
+        <div class="why-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="why-card-icon">📍</div>
+          <h4>Local & Accessible</h4>
+          <p>Based in South Africa, serving Gauteng and World-wide. Fast response times, on-site support when needed, and we understand SA business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get answers to common questions about our services</p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-question">
+            <span>What types of businesses do you work with?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We work with businesses of all sizes across various industries, from small startups to large enterprises. Our services are particularly well-suited for SMEs in South Africa looking to enhance their IT infrastructure, as well as companies requiring specialized Linux server management or custom software development.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-question">
+            <span>How long does a typical project take?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Project timelines vary based on complexity and scope. A standard website might take 4-6 weeks, while custom software development or cloud migration projects can take 2-6 months. During our initial consultation, we'll provide you with a detailed timeline specific to your project requirements.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="faq-question">
+            <span>Do you provide ongoing support after project completion?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We offer comprehensive maintenance and support packages tailored to your needs. This includes system monitoring, security updates, bug fixes, and technical support. We believe in long-term partnerships and are committed to your continued success.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="faq-question">
+            <span>What makes your Linux server management different?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our team consists of certified Linux engineers with enterprise-level experience across Ubuntu, SUSE, and RHEL systems. We focus on security hardening, performance optimization, and proactive monitoring. Unlike generic IT support, we specialize in Linux environments and understand the unique requirements of enterprise server infrastructure.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="faq-question">
+            <span>Can you work with our existing IT infrastructure?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We specialize in integrating with existing systems. Whether you need to upgrade current infrastructure, migrate to the cloud, or add new capabilities, we ensure seamless integration without disrupting your operations. We conduct thorough assessments and create migration plans that minimize risk.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="faq-question">
+            <span>What are your payment terms?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We offer flexible payment structures to accommodate different business needs. Typically, we require a deposit to begin work, with milestone-based payments throughout the project. For ongoing services like support and maintenance, we offer monthly subscription plans. We'll discuss the best payment arrangement during our initial consultation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+          <div class="faq-question">
+            <span>Do you provide training for our staff?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We include comprehensive training and documentation with every project. We ensure your team is fully equipped to use and maintain the solutions we implement. Training can be conducted on-site or remotely, depending on your preferences.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="800">
+          <div class="faq-question">
+            <span>Are you available for emergency support?</span>
+            <i class="bi bi-plus-circle faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>For clients with support contracts, we offer priority emergency support with rapid response times. We understand that IT issues can't wait, and we're committed to minimizing downtime for your business. Contact us to discuss emergency support options for your specific needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Get In Touch</h2>
+        <p>Ready to transform your technology? Let's talk about your project</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="glass-card" data-aos="fade-right">
+          <h3 class="mb-4" style="color: #fff; font-weight: 600;">Contact Information</h3>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div class="contact-info-text">
+              <h5>Location</h5>
+              <p>Midrand, Gauteng<br>South Africa</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div class="contact-info-text">
+              <h5>Phone</h5>
+              <p>076 958 2204</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <div class="contact-info-text">
+              <h5>Email</h5>
+              <p>sanele@onicetechnologies.co.za</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="bi bi-clock-fill"></i>
+            </div>
+            <div class="contact-info-text">
+              <h5>Business Hours</h5>
+              <p>Monday - Friday: 8AM - 5PM<br>Saturday: 9AM - 1PM</p>
+            </div>
+          </div>
+          
+          <h5 style="color: #fff; margin-top: 2rem; margin-bottom: 1rem;">Follow Us</h5>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/109984235/" target="_blank" class="social-link">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="map-container" data-aos="fade-left">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14329.072408201906!2d28.1226133!3d-25.9860768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9574d2b4e0cd35%3A0xa8e4bfa70b9df7a!2sMidrand%2C%20Gauteng!5e0!3m2!1sen!2sza!4v1721395212345!5m2!1sen!2sza"
+            width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> Onice Technologies. All rights reserved. | Built with passion in South Africa 🇿🇦</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div id="cookie-consent">
+    <p><i class="bi bi-cookie me-2"></i><strong>We use cookies</strong><br>
+    To ensure you get the best experience on our website.</p>
+    <div class="d-flex gap-2 justify-content-end">
+      <button class="btn btn-outline-light btn-sm" onclick="rejectCookies()">Reject</button>
+      <button class="btn btn-primary-custom btn-sm" onclick="acceptCookies()" style="padding: 0.6rem 1.5rem;">Accept</button>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTop">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Loading Screen
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("fade-out");
+        setTimeout(() => loader.style.display = "none", 800);
+      }, 1000);
+    });
+
+    // Typing Effect
+    const phrases = ["Innovate.", "Integrate.", "Inspire.", "Transform Your Business.", "Empower Your Growth."];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedTextElement = document.getElementById('typedText');
+
+    function typeEffect() {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        typedTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(typeEffect, typeSpeed);
+    }
+
+    typeEffect();
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu if open
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+          }
+        }
+      });
+    });
+
+    // Navbar Scroll Effect
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    // Active Nav Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Cookie Consent
+    function acceptCookies() {
+      localStorage.setItem("cookieConsent", "accepted");
+      document.getElementById("cookie-consent").style.display = "none";
+    }
+
+    function rejectCookies() {
+      localStorage.setItem("cookieConsent", "rejected");
+      document.getElementById("cookie-consent").style.display = "none";
+    }
+
+    window.addEventListener('load', function () {
+      const consent = localStorage.getItem("cookieConsent");
+      if (!consent) {
+        setTimeout(() => {
+          document.getElementById("cookie-consent").style.display = "block";
+        }, 2000);
+      }
+    });
+
+    // Current Year in Footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    console.log('Onice Technologies Website Loaded Successfully');
+  </script>
+</body>
+</html>
