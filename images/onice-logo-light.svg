@@ -1,0 +1,32 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00aefe;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0066cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00aefe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="200" cy="160" r="70" fill="none" stroke="url(#mainGradient)" stroke-width="8" filter="url(#glow)"/>
+  <circle cx="200" cy="160" r="25" fill="url(#mainGradient)" opacity="0.9"/>
+  <line x1="200" y1="135" x2="200" y2="90" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="200" cy="90" r="6" fill="url(#mainGradient)"/>
+  <line x1="225" y1="160" x2="270" y2="160" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="270" cy="160" r="6" fill="url(#mainGradient)"/>
+  <line x1="200" y1="185" x2="200" y2="230" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="200" cy="230" r="6" fill="url(#mainGradient)"/>
+  <line x1="175" y1="160" x2="130" y2="160" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="130" cy="160" r="6" fill="url(#mainGradient)"/>
+  <text x="200" y="280" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="url(#textGradient)" text-anchor="middle" letter-spacing="2">ONICE</text>
+  <text x="200" y="310" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="500" fill="#00aefe" text-anchor="middle" letter-spacing="4">TECHNOLOGIES</text>
+</svg>
