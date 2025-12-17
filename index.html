@@ -1178,109 +1178,52 @@
       line-height: 1.8;
     }
 
-    /* Why Choose Section */
-    /* WHY PREMIUM */
-.why-premium {
-  padding: 120px 0;
-  background: radial-gradient(circle at top, #0e141b, #090c11);
+/* WHY EDITORIAL SECTION */
+.why-editorial {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #0b0f14, #0e141b);
 }
 
-/* Header */
-.why-header {
-  max-width: 700px;
-  margin-bottom: 80px;
-}
-
-.why-eyebrow {
-  display: inline-block;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--primary-color);
-  margin-bottom: 14px;
-}
-
-.why-header h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.why-header p {
-  color: rgba(255,255,255,0.7);
-  line-height: 1.6;
-}
-
-/* Layout */
-.why-premium-layout {
+.why-layout {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 80px;
+  grid-template-columns: 120px 1fr;
+  gap: 60px;
+  margin-top: 60px;
 }
 
-/* Structural Art */
-.why-structure {
-  position: relative;
+.why-art svg {
+  width: 100%;
   height: 100%;
 }
 
-.structure-line {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--primary-color),
-    transparent
-  );
-  opacity: 0.35;
+.why-art line {
+  stroke: rgba(0, 174, 254, 0.25);
+  stroke-width: 1;
 }
 
-.structure-dot {
-  position: relative;
-  display: block;
-  width: 8px;
-  height: 8px;
-  margin: 70px auto;
-  background: var(--primary-color);
-  border-radius: 50%;
-  box-shadow: 0 0 14px rgba(0,174,254,0.6);
+.why-art circle {
+  fill: rgba(0, 174, 254, 0.8);
 }
 
-/* Content */
-.why-premium-content {
+.why-content {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
 }
 
-.why-statement h4 {
-  font-size: 1.35rem;
+.why-point h4 {
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
-.why-statement p {
-  max-width: 680px;
-  color: rgba(255,255,255,0.75);
+.why-point p {
+  max-width: 650px;
+  font-size: 1rem;
   line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
 }
-
-/* Mobile */
-@media (max-width: 768px) {
-  .why-premium-layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .why-structure {
-    display: none;
-  }
-}
-
 
     /* Contact Section */
     .contact-grid {
@@ -1606,84 +1549,79 @@
     </div>
   </div>
 </section>
-
-  <!-- Why Choose Section -->
-  <!-- WHY CHOOSE : PREMIUM -->
-<section id="why-choose" class="why-premium">
+<!-- Why Choose Section -->
+<section id="why-choose" class="why-editorial">
   <div class="container">
 
-    <header class="why-header" data-aos="fade-up">
-      <span class="why-eyebrow">Our Principles</span>
-      <h2>Why Businesses Trust Onice</h2>
-      <p>
-        We believe long-term technology decisions should be grounded in
-        engineering discipline, not hype.
-      </p>
-    </header>
+    <div class="section-title" data-aos="fade-up">
+      <h2>Why Businesses Choose Onice</h2>
+      <p>Because technology decisions should be made with clarity, not noise</p>
+    </div>
 
-    <div class="why-premium-layout">
+    <div class="why-layout">
 
-      <!-- Art Column -->
-      <div class="why-structure" aria-hidden="true">
-        <span class="structure-line"></span>
-        <span class="structure-dot"></span>
-        <span class="structure-dot"></span>
-        <span class="structure-dot"></span>
-        <span class="structure-dot"></span>
+      <!-- Left Art Column -->
+      <div class="why-art" aria-hidden="true">
+        <svg viewBox="0 0 200 600" preserveAspectRatio="none">
+          <line x1="100" y1="0" x2="100" y2="600" />
+          <circle cx="100" cy="80" r="4" />
+          <circle cx="100" cy="200" r="4" />
+          <circle cx="100" cy="320" r="4" />
+          <circle cx="100" cy="440" r="4" />
+        </svg>
       </div>
 
-      <!-- Content Column -->
-      <div class="why-premium-content">
+      <!-- Right Content Column -->
+      <div class="why-content">
 
-        <article class="why-statement" data-aos="fade-up">
-          <h4>Engineering Comes First</h4>
+        <div class="why-point" data-aos="fade-up">
+          <h4>Engineering Before Aesthetics</h4>
           <p>
-            Every solution begins with architecture, performance,
-            and security. We design systems that are stable under pressure
-            and resilient over time.
+            We start with architecture, performance, and security —
+            ensuring every system is built on a foundation that lasts.
+            Design follows purpose, not trends.
           </p>
-        </article>
+        </div>
 
-        <article class="why-statement" data-aos="fade-up" data-aos-delay="100">
-          <h4>Deliberate Simplicity</h4>
+        <div class="why-point" data-aos="fade-up" data-aos-delay="100">
+          <h4>Clarity Over Complexity</h4>
           <p>
-            Complexity is removed, not celebrated.
-            We deliver clean systems that are easy to operate,
-            document, and evolve.
+            We remove unnecessary layers and technical noise.
+            Our solutions are clean, documented, and easy to operate —
+            so your team stays in control.
           </p>
-        </article>
+        </div>
 
-        <article class="why-statement" data-aos="fade-up" data-aos-delay="200">
-          <h4>Real-World Experience</h4>
+        <div class="why-point" data-aos="fade-up" data-aos-delay="200">
+          <h4>Real Enterprise Experience</h4>
           <p>
-            Our expertise is shaped by production environments,
-            enterprise Linux infrastructure, and mission-critical systems —
-            not theoretical frameworks.
+            Our work is informed by real-world Linux infrastructure,
+            production systems, and business-critical environments —
+            not theory or templates.
           </p>
-        </article>
+        </div>
 
-        <article class="why-statement" data-aos="fade-up" data-aos-delay="300">
-          <h4>Built for the Long Term</h4>
+        <div class="why-point" data-aos="fade-up" data-aos-delay="300">
+          <h4>Long-Term Thinking</h4>
           <p>
-            We design platforms that grow quietly with your business,
-            avoiding rework, fragility, and technical debt.
+            We design systems that scale quietly as your business grows.
+            No rewrites. No constant rebuilds. Just thoughtful evolution.
           </p>
-        </article>
+        </div>
 
-        <article class="why-statement" data-aos="fade-up" data-aos-delay="400">
-          <h4>Local Insight, Global Standards</h4>
+        <div class="why-point" data-aos="fade-up" data-aos-delay="400">
+          <h4>Local Understanding, Global Standards</h4>
           <p>
-            Based in South Africa, delivering systems aligned with
-            international best practices and modern compliance expectations.
+            Based in South Africa, we understand local business realities
+            while delivering infrastructure aligned with global best practices.
           </p>
-        </article>
+        </div>
 
       </div>
     </div>
 
   </div>
 </section>
-
 
   <!-- Services Section -->
   <section id="services">
