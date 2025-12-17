@@ -661,9 +661,6 @@
       color: var(--text-muted);
       margin-bottom: 1rem;
     }
-
-    /* ===============================
-   PROCESS — ARTISTIC RADIAL FLOW
 /* --- PROCESS: ARTISTIC FLOW --- */
 
 .process-art {
@@ -705,6 +702,9 @@
 .process-node {
   position: absolute;
   width: 260px;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
 }
 
 .node-card {
@@ -734,10 +734,10 @@
 }
 
 /* Node positions */
-.node-1 { top: 5%; left: 50%; transform: translateX(-50%); }
-.node-2 { right: 0; top: 50%; transform: translateY(-50%); }
-.node-3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
-.node-4 { left: 0; top: 50%; transform: translateY(-50%); }
+.node-1 { transform: translate(-50%, -50%) translateY(-260px); }
+.node-2 { transform: translate(-50%, -50%) translateX(260px); }
+.node-3 { transform: translate(-50%, -50%) translateY(260px); }
+.node-4 { transform: translate(-50%, -50%) translateX(-260px); }
 
 /* SVG orbital line */
 .process-lines {
