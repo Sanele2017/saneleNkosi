@@ -1079,41 +1079,98 @@
       margin-top: 1rem;
     }
 
-    /* Technologies Section */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+   /* --- TECHNOLOGY BELT --- */
 
-    .tech-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(20px);
-    }
+.tech-belt {
+  position: relative;
+  overflow: hidden;
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+}
 
-    .tech-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary-color);
-      box-shadow: 0 15px 40px rgba(0, 174, 254, 0.3);
-    }
+/* Fade edges */
+.tech-belt::before,
+.tech-belt::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
 
-    .tech-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
+.tech-belt::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0f1f, transparent);
+}
 
-    .tech-card h5 {
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-    }
+.tech-belt::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0f1f, transparent);
+}
+
+/* Track */
+.tech-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: techScroll 40s linear infinite;
+}
+
+.tech-belt:hover .tech-track {
+  animation-play-state: paused;
+}
+
+/* Individual items */
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+}
+
+.tech-item span {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.tech-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 25px rgba(0,174,254,0.35);
+  transform: translateY(-3px);
+}
+
+/* Animation */
+@keyframes techScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .tech-track {
+    gap: 1.5rem;
+    animation-duration: 55s;
+  }
+
+  .tech-item {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
 
     /* FAQ Section */
     .faq-container {
@@ -1752,76 +1809,48 @@
  </section>
 
 <!-- Technologies Section -->
-  <section id="technologies">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <h2>Technologies We Use</h2>
-        <p>Leveraging cutting-edge tools and platforms to build robust solutions</p>
-      </div>
-      
-      <div class="tech-grid">
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
-          <span class="tech-icon">🐧</span>
-          <h5>Linux</h5>
-        </div>
+ <section id="technologies">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Technologies We Use</h2>
+      <p>Engineering with proven, enterprise-grade tools</p>
+    </div>
 
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="150">
-          <span class="tech-icon">☁️</span>
-          <h5>Azure</h5>
-        </div>
+    <div class="tech-belt">
+      <div class="tech-track">
 
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
-          <span class="tech-icon">⚛️</span>
-          <h5>React</h5>
-        </div>
+        <!-- Track 1 -->
+        <div class="tech-item">🐧 <span>Linux</span></div>
+        <div class="tech-item">☁️ <span>Azure</span></div>
+        <div class="tech-item">⚛️ <span>React</span></div>
+        <div class="tech-item">🟢 <span>Node.js</span></div>
+        <div class="tech-item">🐍 <span>Python</span></div>
+        <div class="tech-item">🐘 <span>PHP</span></div>
+        <div class="tech-item">🗄️ <span>MySQL</span></div>
+        <div class="tech-item">🍃 <span>MongoDB</span></div>
+        <div class="tech-item">🐳 <span>Docker</span></div>
+        <div class="tech-item">☸️ <span>Kubernetes</span></div>
+        <div class="tech-item">🔧 <span>Git</span></div>
+        <div class="tech-item">🪟 <span>Windows Server</span></div>
 
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="250">
-          <span class="tech-icon">🟢</span>
-          <h5>Node.js</h5>
-        </div>
+        <!-- Track 2 (duplicate for seamless loop) -->
+        <div class="tech-item">🐧 <span>Linux</span></div>
+        <div class="tech-item">☁️ <span>Azure</span></div>
+        <div class="tech-item">⚛️ <span>React</span></div>
+        <div class="tech-item">🟢 <span>Node.js</span></div>
+        <div class="tech-item">🐍 <span>Python</span></div>
+        <div class="tech-item">🐘 <span>PHP</span></div>
+        <div class="tech-item">🗄️ <span>MySQL</span></div>
+        <div class="tech-item">🍃 <span>MongoDB</span></div>
+        <div class="tech-item">🐳 <span>Docker</span></div>
+        <div class="tech-item">☸️ <span>Kubernetes</span></div>
+        <div class="tech-item">🔧 <span>Git</span></div>
+        <div class="tech-item">🪟 <span>Windows Server</span></div>
 
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
-          <span class="tech-icon">🐍</span>
-          <h5>Python</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="350">
-          <span class="tech-icon">🐘</span>
-          <h5>PHP</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
-          <span class="tech-icon">🗄️</span>
-          <h5>MySQL</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="450">
-          <span class="tech-icon">🍃</span>
-          <h5>MongoDB</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="500">
-          <span class="tech-icon">🐳</span>
-          <h5>Docker</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="550">
-          <span class="tech-icon">☸️</span>
-          <h5>Kubernetes</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="600">
-          <span class="tech-icon">🔧</span>
-          <h5>Git</h5>
-        </div>
-
-        <div class="tech-card" data-aos="fade-up" data-aos-delay="650">
-          <span class="tech-icon">🪟</span>
-          <h5>Windows Server</h5>
-        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   
   <!-- Portfolio Section -->
   <section id="portfolio">
