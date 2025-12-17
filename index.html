@@ -423,6 +423,116 @@
       color: var(--text-muted);
       line-height: 1.8;
     }
+/* --- ABOUT: CINEMATIC ART --- */
+
+.about-art {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(25px);
+  overflow: hidden;
+}
+
+/* SVG circuit */
+.about-circuit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.about-circuit path {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+}
+
+.about-circuit circle {
+  fill: var(--accent-color);
+}
+
+/* Floating particles */
+.about-particles::before,
+.about-particles::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(0,174,254,0.35) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: floatParticles 40s linear infinite;
+  opacity: 0.25;
+}
+
+.about-particles::after {
+  animation-duration: 70s;
+  opacity: 0.15;
+}
+
+@keyframes floatParticles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* Paragraph styling */
+.about-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Reveal animation */
+.about-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.9s ease;
+}
+
+/* Brand highlight */
+.about-highlight {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accent words */
+.about-accent {
+  color: var(--primary-color);
+  font-weight: 600;
+  position: relative;
+}
+
+/* Accent underline */
+.about-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+/* Accent animate */
+.about-accent.animate::after {
+  transform: scaleX(1);
+}
 
     /* Services Section */
     .services-grid {
@@ -1110,42 +1220,52 @@
   </section>
 
   <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <h2>About Onice Technologies</h2>
-        <p>
-          Founded on principles of innovation, integrity, and excellence—we're your trusted partner for cutting-edge digital solutions in South Africa.
-        </p>
-      </div>
-      
-      <div class="about-grid">
-        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="about-card-icon">🎯</div>
-          <h4>Our Vision</h4>
-          <p>
-            To redefine the future through advanced, user-focused technology that inspires progress and innovation across South Africa and beyond.
-          </p>
-        </div>
-        
-        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="about-card-icon">🚀</div>
-          <h4>Our Mission</h4>
-          <p>
-            Building transformative digital solutions that are fast, scalable, and tailored to empower businesses of all sizes to thrive in the digital age.
-          </p>
-        </div>
-        
-        <div class="glass-card about-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="about-card-icon">💎</div>
-          <h4>Our Values</h4>
-          <p>
-            Innovation. Integrity. Excellence. Collaboration. We believe in doing great work with purpose, passion, and unwavering commitment to quality.
-          </p>
-        </div>
-      </div>
+ <section id="about">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>About Onice Technologies</h2>
+      <p>Innovation-driven. Purpose-built. Crafted for performance.</p>
     </div>
-  </section>
+
+    <div class="about-art" data-aos="fade-up">
+
+      <!-- SVG Circuit / Waveform -->
+      <svg class="about-circuit" viewBox="0 0 600 200" preserveAspectRatio="none">
+        <path d="M0 100 Q150 40 300 100 T600 100" />
+        <circle cx="150" cy="70" r="3" />
+        <circle cx="300" cy="100" r="3" />
+        <circle cx="450" cy="130" r="3" />
+      </svg>
+
+      <!-- Floating particles -->
+      <div class="about-particles"></div>
+
+      <!-- Cinematic paragraphs -->
+      <p class="about-text reveal">
+        <span class="about-highlight accent">Onice Technologies</span> is a South African
+        technology partner focused on building
+        <span class="about-accent accent">reliable</span>,
+        <span class="about-accent accent">scalable</span> and
+        <span class="about-accent accent">secure</span> digital solutions.
+      </p>
+
+      <p class="about-text reveal">
+        We blend deep Linux engineering expertise with modern web and cloud
+        technologies to help businesses operate smarter, faster, and with
+        confidence.
+      </p>
+
+      <p class="about-text reveal">
+        Technology should feel
+        <span class="about-accent accent">powerful</span> yet
+        <span class="about-accent accent">effortless</span>,
+        quietly scaling as your business evolves.
+      </p>
+
+    </div>
+  </div>
+</section>
+
 
   <!-- Services Section -->
   <section id="services">
@@ -1941,6 +2061,23 @@
         }
       });
     });
+/* --- ABOUT: SCROLL REVEAL + ACCENT ANIMATION --- */
+const revealItems = document.querySelectorAll('.about-text');
+const accentWords = document.querySelectorAll('.accent');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      entry.target.querySelectorAll('.accent').forEach(word => {
+        word.classList.add('animate');
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+revealItems.forEach(item => observer.observe(item));
 
     // Scroll to Top Button
     const scrollTopBtn = document.getElementById('scrollTop');
