@@ -1171,6 +1171,45 @@
   }
 }
 
+/* TRUST PROOF STRIP */
+
+.trust-proof {
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(
+    to right,
+    rgba(0,174,254,0.04),
+    rgba(255,255,255,0.01),
+    rgba(0,174,254,0.04)
+  );
+}
+
+.proof-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.proof-strip span {
+  color: rgba(255,255,255,0.85);
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.proof-strip span::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+}
 
     /* FAQ Section */
     .faq-container {
@@ -1522,25 +1561,6 @@
           <i class="bi bi-grid-3x3-gap me-2"></i>View Services
         </a>
       </div>
-      
-      <!-- Trust Indicators -->
-      <div class="trust-badges">
-        <div class="trust-badge" data-aos="fade-up" data-aos-delay="100">
-          <i class="bi bi-award-fill"></i>
-          <h4>Certified</h4>
-          <p>Linux Engineer</p>
-        </div>
-        <div class="trust-badge" data-aos="fade-up" data-aos-delay="200">
-          <i class="bi bi-building"></i>
-          <h4>Enterprise</h4>
-          <p>Experience</p>
-        </div>
-        <div class="trust-badge" data-aos="fade-up" data-aos-delay="300">
-          <i class="bi bi-geo-alt-fill"></i>
-          <h4>Local</h4>
-          <p>World-wide</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1600,11 +1620,21 @@
   working in the background, supporting your ambitions,
   while you focus on moving your business forward.
 </p>
-
-
     </div>
   </div>
 </section>
+  <!-- Trust Proof Strip -->
+<section class="trust-proof">
+  <div class="container">
+    <div class="proof-strip" data-aos="fade-up">
+      <span>✔ Linux-Certified Engineers</span>
+      <span>✔ Enterprise & SME Experience</span>
+      <span>✔ High-Availability & Secure Systems</span>
+      <span>✔ South Africa Based · Global Reach</span>
+    </div>
+  </div>
+</section>
+
 <!-- Why Choose Section -->
 <section id="why-choose" class="why-editorial">
   <div class="container">
