@@ -662,91 +662,26 @@
       margin-bottom: 1rem;
     }
 
-    /* Process Section */
-    .process-timeline {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    /* ===============================
+   PROCESS — ARTISTIC RADIAL FLOW
+   =============================== */
 
-    .process-step {
-      display: grid;
-      grid-template-columns: 1fr 80px 1fr;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      align-items: center;
-    }
-
-    .process-step:nth-child(even) .process-content:first-child {
-      order: 3;
-    }
-
-    .process-content {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 15px;
-      padding: 2rem;
-      backdrop-filter: blur(20px);
-      transition: all 0.3s ease;
-    }
-
-    .process-content:hover {
-      border-color: var(--primary-color);
-      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.2);
-    }
-
-    .process-content h4 {
-      color: #fff;
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .process-content p {
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .process-number {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.4);
-      position: relative;
-    }
-
-    .process-number::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 2px;
-      height: 100px;
-      background: linear-gradient(to bottom, var(--primary-color), transparent);
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .process-step:last-child .process-number::after {
-      display: none;
-    }
-
-   /* --- PROCESS: ARTISTIC RADIAL FLOW --- */
+/* Ensure nothing clips the cards */
+#process {
+  overflow: visible;
+}
 
 .process-art {
   position: relative;
   height: 600px;
   max-width: 900px;
   margin: 0 auto;
+  overflow: visible;
 }
 
-/* Center Core */
+/* -------------------------------
+   CENTER CORE
+-------------------------------- */
 .process-core {
   position: absolute;
   top: 50%;
@@ -779,16 +714,18 @@
   }
 }
 
-/* Nodes */
+/* -------------------------------
+   PROCESS NODES
+-------------------------------- */
 .process-node {
   position: absolute;
-  width: 260px;
   top: 50%;
   left: 50%;
-  z-index: 1;
+  width: 260px;
+  z-index: 3; /* ABOVE core + orbit */
 }
 
-/* Radial positioning */
+/* Radial positioning (perfect symmetry) */
 .node-1 {
   transform: translate(-50%, -50%) translateY(-260px);
 }
@@ -805,10 +742,12 @@
   transform: translate(-50%, -50%) translateX(-260px);
 }
 
-/* Node Card */
+/* -------------------------------
+   NODE CARD STYLE
+-------------------------------- */
 .node-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   padding: 1.8rem;
   backdrop-filter: blur(20px);
@@ -817,8 +756,8 @@
 
 .node-card h4 {
   color: #fff;
-  margin-bottom: 0.6rem;
   font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .node-card p {
@@ -829,15 +768,18 @@
 .node-card:hover {
   transform: translateY(-8px);
   border-color: var(--primary-color);
-  box-shadow: 0 15px 40px rgba(0,174,254,0.3);
+  box-shadow: 0 15px 40px rgba(0,174,254,0.35);
 }
 
-/* SVG Orbit */
+/* -------------------------------
+   SVG ORBIT
+-------------------------------- */
 .process-lines {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  opacity: 0.2;
+  z-index: 1;
+  opacity: 0.25;
+  pointer-events: none;
 }
 
 .process-lines circle {
@@ -851,10 +793,12 @@
 
 @keyframes rotateLine {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
-/* Mobile fallback */
+/* -------------------------------
+   MOBILE FALLBACK
+-------------------------------- */
 @media (max-width: 768px) {
   .process-art {
     height: auto;
@@ -871,6 +815,8 @@
     width: 100%;
     transform: none !important;
     margin-bottom: 1.5rem;
+    left: auto;
+    top: auto;
   }
 }
 
