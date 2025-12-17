@@ -737,6 +737,122 @@
       display: none;
     }
 
+    /* --- PROCESS: ARTISTIC FLOW --- */
+
+.process-art {
+  position: relative;
+  height: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Central Core */
+.process-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-color), #001a33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #000;
+  box-shadow:
+    0 0 40px var(--primary-color),
+    0 0 80px rgba(0,174,254,0.4);
+  animation: corePulse 4s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* Nodes */
+.process-node {
+  position: absolute;
+  width: 260px;
+}
+
+.node-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 1.8rem;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+}
+
+.node-card h4 {
+  color: #fff;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.node-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.node-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px rgba(0,174,254,0.3);
+}
+
+/* Node positions */
+.node-1 { top: 5%; left: 50%; transform: translateX(-50%); }
+.node-2 { right: 0; top: 50%; transform: translateY(-50%); }
+.node-3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.node-4 { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* SVG orbital line */
+.process-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.process-lines circle {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-dasharray: 6 10;
+  animation: rotateLine 30s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateLine {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .process-art {
+    height: auto;
+  }
+
+  .process-core {
+    position: relative;
+    transform: none;
+    margin: 0 auto 2rem;
+  }
+
+  .process-node {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
     /* Testimonials Section */
     .testimonials-grid {
       display: grid;
@@ -1404,76 +1520,52 @@
   <div class="container">
     <div class="section-title" data-aos="fade-up">
       <h2>Our Process</h2>
-      <p>A clear, structured approach that delivers results</p>
+      <p>A refined approach that turns vision into reliable systems</p>
     </div>
 
-    <div class="process-timeline">
+    <div class="process-art">
 
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">1</div>
-        <div class="process-content">
-          <h4>Discovery & Consultation</h4>
-          <p>
-            We take time to understand your business, challenges, and goals.
-            This ensures every solution is aligned with real needs.
-          </p>
+      <!-- Center Core -->
+      <div class="process-core">
+        <span>ONICE<br>FLOW</span>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="process-node node-1" data-aos="fade-up">
+        <div class="node-card">
+          <h4>Discover</h4>
+          <p>We analyze your goals, challenges, and environment to define the right direction.</p>
         </div>
       </div>
 
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">2</div>
-        <div class="process-content">
-          <h4>Planning & Strategy</h4>
-          <p>
-            We define scope, timelines, technologies, and architecture.
-            Everything is planned to avoid surprises.
-          </p>
+      <!-- Step 2 -->
+      <div class="process-node node-2" data-aos="fade-up" data-aos-delay="100">
+        <div class="node-card">
+          <h4>Design</h4>
+          <p>Architecture, UX, and system planning crafted for performance and scale.</p>
         </div>
       </div>
 
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">3</div>
-        <div class="process-content">
-          <h4>Design & Development</h4>
-          <p>
-            Our team designs and builds the solution using best practices,
-            keeping you informed at every milestone.
-          </p>
+      <!-- Step 3 -->
+      <div class="process-node node-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="node-card">
+          <h4>Build</h4>
+          <p>Clean, secure implementation using modern technologies and best practices.</p>
         </div>
       </div>
 
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">4</div>
-        <div class="process-content">
-          <h4>Testing & Quality Assurance</h4>
-          <p>
-            We rigorously test performance, security, and usability
-            to ensure a flawless final product.
-          </p>
+      <!-- Step 4 -->
+      <div class="process-node node-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="node-card">
+          <h4>Launch & Optimize</h4>
+          <p>Deployment, monitoring, and continuous refinement as your business grows.</p>
         </div>
       </div>
 
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">5</div>
-        <div class="process-content">
-          <h4>Deployment & Training</h4>
-          <p>
-            We deploy smoothly and provide training so your team
-            can confidently use and manage the system.
-          </p>
-        </div>
-      </div>
-
-      <div class="process-step" data-aos="fade-up">
-        <div class="process-number">6</div>
-        <div class="process-content">
-          <h4>Support & Optimization</h4>
-          <p>
-            After launch, we monitor, support, and continuously
-            optimize to keep everything running at peak performance.
-          </p>
-        </div>
-      </div>
+      <!-- SVG connectors -->
+      <svg class="process-lines" viewBox="0 0 600 600">
+        <circle cx="300" cy="300" r="200" />
+      </svg>
 
     </div>
   </div>
