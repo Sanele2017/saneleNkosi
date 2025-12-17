@@ -664,24 +664,16 @@
 
     /* ===============================
    PROCESS — ARTISTIC RADIAL FLOW
-   =============================== */
-
-/* Ensure nothing clips the cards */
-#process {
-  overflow: visible;
-}
+/* --- PROCESS: ARTISTIC FLOW --- */
 
 .process-art {
   position: relative;
   height: 600px;
   max-width: 900px;
   margin: 0 auto;
-  overflow: visible;
 }
 
-/* -------------------------------
-   CENTER CORE
--------------------------------- */
+/* Central Core */
 .process-core {
   position: absolute;
   top: 50%;
@@ -702,52 +694,22 @@
     0 0 40px var(--primary-color),
     0 0 80px rgba(0,174,254,0.4);
   animation: corePulse 4s ease-in-out infinite;
-  z-index: 2;
 }
 
 @keyframes corePulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.08);
-  }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
-/* -------------------------------
-   PROCESS NODES
--------------------------------- */
+/* Nodes */
 .process-node {
   position: absolute;
-  top: 50%;
-  left: 50%;
   width: 260px;
-  z-index: 3; /* ABOVE core + orbit */
 }
 
-/* Radial positioning (perfect symmetry) */
-.node-1 {
-  transform: translate(-50%, -50%) translateY(-260px);
-}
-
-.node-2 {
-  transform: translate(-50%, -50%) translateX(260px);
-}
-
-.node-3 {
-  transform: translate(-50%, -50%) translateY(260px);
-}
-
-.node-4 {
-  transform: translate(-50%, -50%) translateX(-260px);
-}
-
-/* -------------------------------
-   NODE CARD STYLE
--------------------------------- */
 .node-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 20px;
   padding: 1.8rem;
   backdrop-filter: blur(20px);
@@ -756,8 +718,8 @@
 
 .node-card h4 {
   color: #fff;
-  font-weight: 600;
   margin-bottom: 0.6rem;
+  font-weight: 600;
 }
 
 .node-card p {
@@ -768,18 +730,21 @@
 .node-card:hover {
   transform: translateY(-8px);
   border-color: var(--primary-color);
-  box-shadow: 0 15px 40px rgba(0,174,254,0.35);
+  box-shadow: 0 15px 40px rgba(0,174,254,0.3);
 }
 
-/* -------------------------------
-   SVG ORBIT
--------------------------------- */
+/* Node positions */
+.node-1 { top: 5%; left: 50%; transform: translateX(-50%); }
+.node-2 { right: 0; top: 50%; transform: translateY(-50%); }
+.node-3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.node-4 { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* SVG orbital line */
 .process-lines {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  opacity: 0.25;
-  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
 }
 
 .process-lines circle {
@@ -793,12 +758,10 @@
 
 @keyframes rotateLine {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* -------------------------------
-   MOBILE FALLBACK
--------------------------------- */
+/* Responsive */
 @media (max-width: 768px) {
   .process-art {
     height: auto;
@@ -813,10 +776,7 @@
   .process-node {
     position: relative;
     width: 100%;
-    transform: none !important;
     margin-bottom: 1.5rem;
-    left: auto;
-    top: auto;
   }
 }
 
