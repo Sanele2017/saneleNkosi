@@ -662,11 +662,10 @@
       margin-bottom: 1rem;
     }
 /* --- PROCESS: ARTISTIC FLOW --- */
-
 .process-art {
   position: relative;
   height: 600px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -691,6 +690,7 @@
     0 0 40px var(--primary-color),
     0 0 80px rgba(0,174,254,0.4);
   animation: corePulse 4s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes corePulse {
@@ -702,6 +702,9 @@
 .process-node {
   position: absolute;
   width: 260px;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
 }
 
 .node-card {
@@ -722,6 +725,7 @@
 .node-card p {
   color: var(--text-muted);
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .node-card:hover {
@@ -730,18 +734,37 @@
   box-shadow: 0 15px 40px rgba(0,174,254,0.3);
 }
 
-/* Node positions */
-.node-1 { top: 5%; left: 50%; transform: translateX(-50%); }
-.node-2 { right: 0; top: 50%; transform: translateY(-50%); }
-.node-3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
-.node-4 { left: 0; top: 50%; transform: translateY(-50%); }
+/* Node positions - Circular layout at 270px radius */
+/* Top: 0deg (12 o'clock) */
+.node-1 { 
+  transform: translate(-50%, -50%) translate(0, -270px) translateX(-50%);
+}
+
+/* Right: 90deg (3 o'clock) */
+.node-2 { 
+  transform: translate(-50%, -50%) translate(270px, 0) translateY(-50%);
+}
+
+/* Bottom: 180deg (6 o'clock) */
+.node-3 { 
+  transform: translate(-50%, -50%) translate(0, 270px) translateX(-50%);
+}
+
+/* Left: 270deg (9 o'clock) */
+.node-4 { 
+  transform: translate(-50%, -50%) translate(-270px, 0) translateY(-50%);
+}
 
 /* SVG orbital line */
 .process-lines {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
   z-index: 0;
-  opacity: 0.2;
+  pointer-events: none;
 }
 
 .process-lines circle {
@@ -751,6 +774,7 @@
   stroke-dasharray: 6 10;
   animation: rotateLine 30s linear infinite;
   transform-origin: center;
+  opacity: 0.3;
 }
 
 @keyframes rotateLine {
@@ -762,18 +786,28 @@
 @media (max-width: 768px) {
   .process-art {
     height: auto;
+    padding: 2rem 0;
   }
-
+  
   .process-core {
     position: relative;
+    top: auto;
+    left: auto;
     transform: none;
-    margin: 0 auto 2rem;
+    margin: 0 auto 3rem;
   }
-
+  
   .process-node {
     position: relative;
     width: 100%;
+    top: auto;
+    left: auto;
+    transform: none;
     margin-bottom: 1.5rem;
+  }
+  
+  .process-lines {
+    display: none;
   }
 }
 
