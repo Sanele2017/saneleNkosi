@@ -1179,40 +1179,108 @@
     }
 
     /* Why Choose Section */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+    /* WHY PREMIUM */
+.why-premium {
+  padding: 120px 0;
+  background: radial-gradient(circle at top, #0e141b, #090c11);
+}
 
-    .why-card {
-      text-align: center;
-    }
+/* Header */
+.why-header {
+  max-width: 700px;
+  margin-bottom: 80px;
+}
 
-    .why-card-icon {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 10px 30px rgba(0, 174, 254, 0.3);
-    }
+.why-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 14px;
+}
 
-    .why-card h4 {
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+.why-header h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
 
-    .why-card p {
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+.why-header p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+/* Layout */
+.why-premium-layout {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 80px;
+}
+
+/* Structural Art */
+.why-structure {
+  position: relative;
+  height: 100%;
+}
+
+.structure-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+  opacity: 0.35;
+}
+
+.structure-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 70px auto;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(0,174,254,0.6);
+}
+
+/* Content */
+.why-premium-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.why-statement h4 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.why-statement p {
+  max-width: 680px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .why-premium-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .why-structure {
+    display: none;
+  }
+}
+
 
     /* Contact Section */
     .contact-grid {
@@ -1540,52 +1608,82 @@
 </section>
 
   <!-- Why Choose Section -->
-  <section id="why-choose">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <h2>Why Choose Onice Technologies</h2>
-        <p>We bring creativity, care, and commitment to every project</p>
+  <!-- WHY CHOOSE : PREMIUM -->
+<section id="why-choose" class="why-premium">
+  <div class="container">
+
+    <header class="why-header" data-aos="fade-up">
+      <span class="why-eyebrow">Our Principles</span>
+      <h2>Why Businesses Trust Onice</h2>
+      <p>
+        We believe long-term technology decisions should be grounded in
+        engineering discipline, not hype.
+      </p>
+    </header>
+
+    <div class="why-premium-layout">
+
+      <!-- Art Column -->
+      <div class="why-structure" aria-hidden="true">
+        <span class="structure-line"></span>
+        <span class="structure-dot"></span>
+        <span class="structure-dot"></span>
+        <span class="structure-dot"></span>
+        <span class="structure-dot"></span>
       </div>
-      
-      <div class="why-grid">
-        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="why-card-icon">🚀</div>
-          <h4>Innovative Solutions</h4>
-          <p>We embrace cutting-edge technology and fresh ideas to create unique solutions perfectly tailored to your specific business needs.</p>
-        </div>
-        
-        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="why-card-icon">🤝</div>
-          <h4>Client-Centric Approach</h4>
-          <p>Your goals are our priority. We collaborate closely with you throughout every phase to ensure your complete success and satisfaction.</p>
-        </div>
-        
-        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="why-card-icon">💡</div>
-          <h4>Expert Team</h4>
-          <p>Linux certified engineers with real enterprise experience. Deep knowledge backed by proven expertise.</p>
-        </div>
-        
-        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="why-card-icon">⚙️</div>
-          <h4>Reliable Support</h4>
-          <p>We offer ongoing maintenance and dedicated support to keep your technology running smoothly. Always here when you need us.</p>
-        </div>
-        
-        <div class="why-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="why-card-icon">💰</div>
-          <h4>Cost-Effective</h4>
-          <p>Enterprise-grade solutions without enterprise prices. Fair, transparent pricing designed for South Africa SMEs and growing businesses.</p>
-        </div>
-        
-        <div class="why-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="why-card-icon">📍</div>
-          <h4>Local & Accessible</h4>
-          <p>Based in South Africa, serving Gauteng and World-wide. Fast response times, on-site support when needed, and we understand SA business.</p>
-        </div>
+
+      <!-- Content Column -->
+      <div class="why-premium-content">
+
+        <article class="why-statement" data-aos="fade-up">
+          <h4>Engineering Comes First</h4>
+          <p>
+            Every solution begins with architecture, performance,
+            and security. We design systems that are stable under pressure
+            and resilient over time.
+          </p>
+        </article>
+
+        <article class="why-statement" data-aos="fade-up" data-aos-delay="100">
+          <h4>Deliberate Simplicity</h4>
+          <p>
+            Complexity is removed, not celebrated.
+            We deliver clean systems that are easy to operate,
+            document, and evolve.
+          </p>
+        </article>
+
+        <article class="why-statement" data-aos="fade-up" data-aos-delay="200">
+          <h4>Real-World Experience</h4>
+          <p>
+            Our expertise is shaped by production environments,
+            enterprise Linux infrastructure, and mission-critical systems —
+            not theoretical frameworks.
+          </p>
+        </article>
+
+        <article class="why-statement" data-aos="fade-up" data-aos-delay="300">
+          <h4>Built for the Long Term</h4>
+          <p>
+            We design platforms that grow quietly with your business,
+            avoiding rework, fragility, and technical debt.
+          </p>
+        </article>
+
+        <article class="why-statement" data-aos="fade-up" data-aos-delay="400">
+          <h4>Local Insight, Global Standards</h4>
+          <p>
+            Based in South Africa, delivering systems aligned with
+            international best practices and modern compliance expectations.
+          </p>
+        </article>
+
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
 
   <!-- Services Section -->
   <section id="services">
