@@ -662,12 +662,34 @@
       margin-bottom: 1rem;
     }
 /* --- PROCESS: ARTISTIC FLOW --- */
+/* --- PROCESS: ARTISTIC FLOW --- */
 .process-art {
   position: relative;
   height: 700px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 0;
+  overflow: visible;
+}
+
+/* Ambient glow background */
+.process-art::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,174,254,0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  animation: ambientPulse 8s ease-in-out infinite;
+}
+
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
 }
 
 /* Central Core */
@@ -679,25 +701,64 @@
   height: 180px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, var(--primary-color), #001a33);
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(0,174,254,0.9), transparent 70%),
+    radial-gradient(circle, #00aefe, #0066cc);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   color: #000;
   box-shadow:
-    0 0 40px var(--primary-color),
-    0 0 80px rgba(0,174,254,0.4);
+    0 0 60px rgba(0,174,254,0.8),
+    0 0 120px rgba(0,174,254,0.4),
+    inset 0 0 40px rgba(255,255,255,0.1);
   animation: corePulse 4s ease-in-out infinite;
   z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect on core */
+.process-core::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255,255,255,0.3) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 @keyframes corePulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.08); }
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 0 60px rgba(0,174,254,0.8),
+      0 0 120px rgba(0,174,254,0.4),
+      inset 0 0 40px rgba(255,255,255,0.1);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow:
+      0 0 80px rgba(0,174,254,1),
+      0 0 160px rgba(0,174,254,0.6),
+      inset 0 0 50px rgba(255,255,255,0.2);
+  }
 }
 
 /* Nodes */
@@ -708,31 +769,99 @@
 }
 
 .node-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  backdrop-filter: blur(20px);
-  transition: all 0.4s ease;
+  position: relative;
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(0,174,254,0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(30px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Gradient border effect */
+.node-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,174,254,0.5), rgba(0,174,254,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Glow orb in corner */
+.node-card::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(0,174,254,0.3), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 
 .node-card h4 {
+  position: relative;
   color: #fff;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #fff 0%, rgba(0,174,254,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.5s ease;
 }
 
 .node-card p {
-  color: var(--text-muted);
-  line-height: 1.6;
+  position: relative;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
   font-size: 0.95rem;
+  transition: color 0.5s ease;
 }
 
+/* Hover effects */
 .node-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--primary-color);
-  box-shadow: 0 15px 40px rgba(0,174,254,0.3);
+  transform: translateY(-12px) scale(1.02);
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+  border-color: rgba(0,174,254,0.6);
+  box-shadow: 
+    0 20px 60px rgba(0,174,254,0.4),
+    0 0 80px rgba(0,174,254,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.node-card:hover::before {
+  opacity: 1;
+}
+
+.node-card:hover::after {
+  opacity: 1;
+  top: -30px;
+  right: -30px;
+}
+
+.node-card:hover h4 {
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(0,174,254,0.5);
+}
+
+.node-card:hover p {
+  color: rgba(255,255,255,0.9);
 }
 
 /* Node positions - Perfect circular layout */
@@ -741,6 +870,12 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  animation: floatNode1 6s ease-in-out infinite;
+}
+
+@keyframes floatNode1 {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 /* Right: Design */
@@ -748,6 +883,12 @@
   top: 50%;
   right: 10%;
   transform: translateY(-50%);
+  animation: floatNode2 6s ease-in-out infinite 1.5s;
+}
+
+@keyframes floatNode2 {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(10px); }
 }
 
 /* Bottom: Build */
@@ -755,6 +896,12 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  animation: floatNode3 6s ease-in-out infinite 3s;
+}
+
+@keyframes floatNode3 {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
 }
 
 /* Left: Launch & Optimize */
@@ -762,6 +909,12 @@
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
+  animation: floatNode4 6s ease-in-out infinite 4.5s;
+}
+
+@keyframes floatNode4 {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-10px); }
 }
 
 /* SVG orbital line */
@@ -774,16 +927,17 @@
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
+  filter: drop-shadow(0 0 20px rgba(0,174,254,0.3));
 }
 
 .process-lines circle {
   fill: none;
-  stroke: var(--primary-color);
+  stroke: url(#orbitalGradient);
   stroke-width: 2;
   stroke-dasharray: 8 12;
   animation: rotateLine 30s linear infinite;
   transform-origin: center;
-  opacity: 0.25;
+  opacity: 0.4;
 }
 
 @keyframes rotateLine {
@@ -801,12 +955,20 @@
   .process-node {
     width: 240px;
   }
+  
+  .node-card {
+    padding: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
   .process-art {
     height: auto;
     padding: 2rem 1rem;
+  }
+  
+  .process-art::before {
+    display: none;
   }
   
   .process-core {
@@ -826,6 +988,7 @@
     bottom: auto;
     transform: none;
     margin-bottom: 1.5rem;
+    animation: none;
   }
   
   .process-lines {
@@ -1542,9 +1705,16 @@
 </div>
 
       <!-- SVG connectors -->
-      <svg class="process-lines" viewBox="0 0 600 600">
-        <circle cx="300" cy="300" r="200" />
-      </svg>
+     <svg class="process-lines" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="orbitalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(0,174,254,0.8);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgba(0,174,254,0.4);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(0,174,254,0.8);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="300" cy="300" r="200" />
+</svg>
 
     </div>
   </div>
