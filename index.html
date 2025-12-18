@@ -1243,39 +1243,39 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
 }
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+.timeline {
+  position: relative;
+  margin: 50px 0;
+  padding-left: 30px;
+  border-left: 3px solid #3498db; /* vertical timeline line */
 }
 
-.case-card {
-  perspective: 1000px;
-  cursor: pointer;
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
 }
 
-.case-card > div {
-  backface-visibility: hidden;
-  transition: transform 0.6s;
+.timeline-item .timeline-icon {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  background: #3498db;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.timeline-item .timeline-content {
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  background: #fff;
-  min-height: 200px;
-}
-
-.case-card .case-back {
-  transform: rotateY(180deg);
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-}
-
-.case-card:hover .case-front {
-  transform: rotateY(180deg);
-}
-
-.case-card:hover .case-back {
-  transform: rotateY(0);
 }
 
     /* Contact Section */
@@ -1833,49 +1833,45 @@
   </div>
 </section>
   
-  <!-- Portfolio Section -->
-  <section id="case-studies">
+ <section id="case-timeline">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-      <h2>Case Studies</h2>
-      <p>How we solve real-world IT and infrastructure challenges</p>
+      <h2>Our Projects Timeline</h2>
+      <p>See how we tackle real-world IT challenges from start to finish</p>
     </div>
 
-    <div class="case-grid">
+    <div class="timeline">
 
-      <!-- Card 1 -->
-      <div class="case-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="case-front">
+      <!-- Timeline Item 1 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="timeline-icon">🛠</div>
+        <div class="timeline-content">
           <h3>Proactive IT Operations</h3>
-          <p>Challenge: Frequent system downtime and delayed IT support.</p>
-        </div>
-        <div class="case-back">
-          <p><strong>Approach:</strong> Implemented remote monitoring, patch management, and incident response.</p>
-          <p><strong>Impact:</strong> Reduced downtime, faster issue resolution, and predictable operations.</p>
+          <p><strong>Challenge:</strong> Frequent system downtime and delayed IT support.</p>
+          <p><strong>Solution:</strong> Implemented remote monitoring, patch management, and structured incident response.</p>
+          <p><strong>Outcome:</strong> Reduced downtime, faster issue resolution, and predictable operations.</p>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="case-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="case-front">
+      <!-- Timeline Item 2 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-icon">🐧</div>
+        <div class="timeline-content">
           <h3>Secure Linux Server Deployment</h3>
-          <p>Challenge: Legacy servers with inconsistent security and no standards.</p>
-        </div>
-        <div class="case-back">
-          <p><strong>Approach:</strong> Designed and deployed hardened Linux servers with monitoring and documentation.</p>
-          <p><strong>Impact:</strong> Standardized, secure infrastructure ready to scale.</p>
+          <p><strong>Challenge:</strong> Legacy servers with inconsistent security and no standardization.</p>
+          <p><strong>Solution:</strong> Designed and deployed hardened Linux servers with monitoring and full documentation.</p>
+          <p><strong>Outcome:</strong> Standardized, secure infrastructure ready for scaling.</p>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="case-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="case-front">
-          <h3>Monitoring & Alerting Setup</h3>
-          <p>Challenge: Issues only detected after system failures.</p>
-        </div>
-        <div class="case-back">
-          <p><strong>Approach:</strong> Deployed Zabbix & Prometheus for proactive alerts.</p>
-          <p><strong>Impact:</strong> Early issue detection, reduced downtime, improved response times.</p>
+      <!-- Timeline Item 3 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="timeline-icon">☁️</div>
+        <div class="timeline-content">
+          <h3>Monitoring & Alerting</h3>
+          <p><strong>Challenge:</strong> Problems detected only after system failure.</p>
+          <p><strong>Solution:</strong> Implemented monitoring and alerting using Zabbix & Prometheus.</p>
+          <p><strong>Outcome:</strong> Early detection, reduced downtime, and faster response.</p>
         </div>
       </div>
     </div>
