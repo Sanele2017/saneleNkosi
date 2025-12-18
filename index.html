@@ -1246,34 +1246,103 @@
 .timeline {
   position: relative;
   margin: 50px 0;
-  padding-left: 30px;
-  border-left: 3px solid #3498db; /* vertical timeline line */
+  padding-left: 40px;
+  border-left: 3px solid #6C63FF; /* playful color */
+}
+
+/* Animated dots along the vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 7px;
+  height: 100%;
+  background: linear-gradient(to bottom, #6C63FF 25%, transparent 25%, transparent 50%, #6C63FF 50%, #6C63FF 75%, transparent 75%, transparent);
+  background-size: 100% 20px;
+  animation: moveDots 3s linear infinite;
+}
+
+@keyframes moveDots {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 20px; }
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   padding-left: 30px;
+  transition: transform 0.3s ease;
 }
 
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+/* Timeline icon */
 .timeline-item .timeline-icon {
   position: absolute;
-  left: -20px;
+  left: -25px;
   top: 0;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #FFD1DC, #FFB6C1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Icon hover */
+.timeline-item .timeline-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Tiny accent shape (star) */
+.timeline-item .timeline-icon::after {
+  content: '★';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 0.8rem;
+  color: #FFD700;
+  animation: floatStar 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatStar {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
 }
 
 .timeline-item .timeline-content {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 22px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.timeline-item .timeline-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.timeline-item .timeline-content h3 {
+  color: #6C63FF; 
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.timeline-item .timeline-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
 
     /* Contact Section */
     .contact-grid {
@@ -1871,9 +1940,44 @@
           <p><strong>Outcome:</strong> Early detection, reduced downtime, and faster response.</p>
         </div>
       </div>
+
+      <!-- Timeline Item 4 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+        <div class="timeline-icon">💻</div>
+        <div class="timeline-content">
+          <h3>Web & Systems Development</h3>
+          <p><strong>Challenge:</strong> Outdated internal systems and fragmented workflows.</p>
+          <p><strong>Solution:</strong> Built custom admin dashboards, APIs, and integrated professional websites.</p>
+          <p><strong>Outcome:</strong> Streamlined workflows and improved team productivity.</p>
+        </div>
+      </div>
+
+      <!-- Timeline Item 5 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+        <div class="timeline-icon">🔒</div>
+        <div class="timeline-content">
+          <h3>Security Infrastructure Overhaul</h3>
+          <p><strong>Challenge:</strong> Vulnerable systems and inconsistent security practices.</p>
+          <p><strong>Solution:</strong> Implemented enterprise-grade security across Linux servers.</p>
+          <p><strong>Outcome:</strong> Robust, compliant, and secure infrastructure.</p>
+        </div>
+      </div>
+
+      <!-- Timeline Item 6 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="600">
+        <div class="timeline-icon">🌐</div>
+        <div class="timeline-content">
+          <h3>Digital Transformation Strategy</h3>
+          <p><strong>Challenge:</strong> Inefficient IT operations and high operational costs.</p>
+          <p><strong>Solution:</strong> Conducted comprehensive IT audit and implemented a roadmap for improvement.</p>
+          <p><strong>Outcome:</strong> Reduced operational costs and optimized IT processes.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 
   <!-- Testimonials Section 
   <section id="testimonials">
