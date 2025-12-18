@@ -521,6 +521,7 @@
       height: 220px;
       object-fit: cover;
       transition: transform 0.5s ease;
+      filter: brightness(0.75);
     }
 
     .service-card:hover .service-card-image {
@@ -1621,71 +1622,74 @@
   </div>
 </section>
 
-  <!-- Services Section -->
-  <section id="services">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <h2>Our Solutions</h2>
-        <p>Comprehensive IT services tailored to your business needs</p>
-      </div>
-      
-      <div class="services-grid">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-icon"><i class="bi bi-server"></i></div>
-          <img src="images/server.jpeg" alt="Linux Services" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>Linux/Windows Server Management</h3>
-            <p>Enterprise-grade server setup, security hardening, performance optimization, and 24/7 monitoring for Ubuntu, SUSE, and RHEL systems.</p>
-          </div>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="service-icon"><i class="bi bi-laptop"></i></div>
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="Web Development" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>Web Development</h3>
-            <p>Modern, responsive websites that reflect your brand. Custom solutions built with cutting-edge technologies to drive real business results.</p>
-          </div>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-icon"><i class="bi bi-cloud"></i></div>
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop" alt="Cloud Services" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>Cloud Solutions</h3>
-            <p>Seamless cloud migration and management across Azure, Oracle Cloud, and hybrid environments. Scalable infrastructure that grows with you.</p>
-          </div>
-        </div>
-        
-        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="service-icon"><i class="bi bi-hdd-network"></i></div>
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop" alt="IT Support" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>IT Support & Maintenance</h3>
-            <p>Comprehensive help desk services, system monitoring, security updates, and proactive maintenance to keep your business running smoothly.</p>
-          </div>
-        </div>
-        
-        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="service-icon"><i class="bi bi-code-square"></i></div>
-          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&h=300&fit=crop" alt="Custom Software" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>Custom Software Development</h3>
-            <p>Bespoke software solutions designed to fit your unique business processes. From concept to deployment with full documentation.</p>
-          </div>
-        </div>
-        
-        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="service-icon"><i class="bi bi-lightbulb"></i></div>
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="IT Consulting" class="service-card-image" />
-          <div class="service-card-content">
-            <h3>IT Consulting & Strategy</h3>
-            <p>Expert insights, infrastructure audits, and strategic planning tailored for growth. Make informed technology decisions with confidence.</p>
-          </div>
-        </div>
-      </div>
+ <!-- Services Section -->
+<section id="services">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Core Services</h2>
+      <p>Focused, reliable technology services designed to support and scale your business</p>
     </div>
-  </section>
+    
+    <div class="services-grid">
+
+      <!-- Managed IT Support -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-icon"><i class="bi bi-tools"></i></div>
+             <img 
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&h=600&fit=crop&auto=format"
+                  alt="Managed IT Support"
+                  class="service-card-image"
+                />
+        <div class="service-card-content">
+          <h3>Managed IT Support</h3>
+          <p>
+            Proactive IT support and system management designed to keep your business running smoothly.
+            Includes remote IT support, system health checks, patch and update management,
+            infrastructure monitoring, and incident response.
+          </p>
+        </div>
+      </div>
+
+      <!-- Infrastructure & Linux Services -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-icon"><i class="bi bi-server"></i></div>
+            <img 
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&h=600&fit=crop&auto=format"
+                  alt="Infrastructure & Linux Services"
+                  class="service-card-image"
+              />
+        <div class="service-card-content">
+          <h3>Infrastructure & Linux Services</h3>
+          <p>
+            Design, deployment, and management of secure and scalable server environments.
+            Includes Linux server setup and hardening, virtualization (KVM / VMware),
+            monitoring and alerting (Zabbix / Prometheus), automation, configuration management,
+            and full documentation handover.
+          </p>
+        </div>
+      </div>
+
+      <!-- Web & Systems Development -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+            <img 
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=600&fit=crop&auto=format"
+                alt="Web & Systems Development"
+                class="service-card-image"
+              />
+        <div class="service-card-content">
+          <h3>Web & Systems Development</h3>
+          <p>
+            Custom-built digital solutions aligned to your business processes.
+            Includes professional websites, internal business systems,
+            admin dashboards, API integrations, and ongoing maintenance.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
  <!-- Process Section -->
  <section id="process">
@@ -1761,33 +1765,34 @@
     <div class="tech-belt">
       <div class="tech-track">
 
-        <!-- Track 1 -->
-        <div class="tech-item">🐧 <span>Linux</span></div>
-        <div class="tech-item">☁️ <span>Azure</span></div>
-        <div class="tech-item">⚛️ <span>React</span></div>
-        <div class="tech-item">🟢 <span>Node.js</span></div>
-        <div class="tech-item">🐍 <span>Python</span></div>
-        <div class="tech-item">🐘 <span>PHP</span></div>
-        <div class="tech-item">🗄️ <span>MySQL</span></div>
-        <div class="tech-item">🍃 <span>MongoDB</span></div>
-        <div class="tech-item">🐳 <span>Docker</span></div>
-        <div class="tech-item">☸️ <span>Kubernetes</span></div>
-        <div class="tech-item">🔧 <span>Git</span></div>
+       <!-- Track 1 -->
+        <div class="tech-item">🐧 <span>Linux (Ubuntu / RHEL)</span></div>
         <div class="tech-item">🪟 <span>Windows Server</span></div>
-
+        <div class="tech-item">🖥️ <span>VMware</span></div>
+        <div class="tech-item">⚙️ <span>KVM</span></div>
+        <div class="tech-item">📊 <span>Zabbix</span></div>
+        <div class="tech-item">📈 <span>Prometheus</span></div>
+        <div class="tech-item">🔄 <span>Ansible</span></div>
+        <div class="tech-item">🐳 <span>Docker</span></div>
+        <div class="tech-item">🔐 <span>Security Hardening</span></div>
+        <div class="tech-item">📡 <span>Infrastructure Monitoring</span></div>
+        <div class="tech-item">🔧 <span>Git</span></div>
+        <div class="tech-item">🌐 <span>API Integrations</span></div>
+        
         <!-- Track 2 (duplicate for seamless loop) -->
-        <div class="tech-item">🐧 <span>Linux</span></div>
-        <div class="tech-item">☁️ <span>Azure</span></div>
-        <div class="tech-item">⚛️ <span>React</span></div>
-        <div class="tech-item">🟢 <span>Node.js</span></div>
-        <div class="tech-item">🐍 <span>Python</span></div>
-        <div class="tech-item">🐘 <span>PHP</span></div>
-        <div class="tech-item">🗄️ <span>MySQL</span></div>
-        <div class="tech-item">🍃 <span>MongoDB</span></div>
-        <div class="tech-item">🐳 <span>Docker</span></div>
-        <div class="tech-item">☸️ <span>Kubernetes</span></div>
-        <div class="tech-item">🔧 <span>Git</span></div>
+        <div class="tech-item">🐧 <span>Linux (Ubuntu / RHEL)</span></div>
         <div class="tech-item">🪟 <span>Windows Server</span></div>
+        <div class="tech-item">🖥️ <span>VMware</span></div>
+        <div class="tech-item">⚙️ <span>KVM</span></div>
+        <div class="tech-item">📊 <span>Zabbix</span></div>
+        <div class="tech-item">📈 <span>Prometheus</span></div>
+        <div class="tech-item">🔄 <span>Ansible</span></div>
+        <div class="tech-item">🐳 <span>Docker</span></div>
+        <div class="tech-item">🔐 <span>Security Hardening</span></div>
+        <div class="tech-item">📡 <span>Infrastructure Monitoring</span></div>
+        <div class="tech-item">🔧 <span>Git</span></div>
+        <div class="tech-item">🌐 <span>API Integrations</span></div>
+        
 
       </div>
     </div>
