@@ -18,13 +18,13 @@
     }
 
     :root {
-      --primary-color: #00aefe;
-      --secondary-color: #0066cc;
-      --accent-color: #00ffff;
+      --primary-color: #00aefe;    /* Bright cyan-blue */
+      --secondary-color: #0066cc;  /* Deep blue */
+      --accent-color: #33cfff;     /* Light cyan accent */
       --dark-bg: #0a0a0a;
       --card-bg: rgba(255, 255, 255, 0.05);
       --text-light: #e0e0e0;
-      --text-muted: #b0b0b0;
+      --text-muted: #b0b0b0;;
     }
 
     body {
@@ -205,9 +205,9 @@
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 800;
       background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       margin-bottom: 1rem;
       letter-spacing: -1px;
     }
@@ -1247,20 +1247,29 @@
   position: relative;
   margin: 50px 0;
   padding-left: 40px;
-  border-left: 3px solid #6C63FF; /* playful color */
+  border-left: 3px solid var(--primary-color);
 }
 
 /* Animated dots along the vertical line */
 .timeline::before {
-  content: '';
-  position: absolute;
-  left: -2px;
-  top: 0;
-  width: 7px;
-  height: 100%;
-  background: linear-gradient(to bottom, #6C63FF 25%, transparent 25%, transparent 50%, #6C63FF 50%, #6C63FF 75%, transparent 75%, transparent);
-  background-size: 100% 20px;
-  animation: moveDots 3s linear infinite;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--primary-color) 50%,
+    var(--primary-color) 75%,
+    transparent 75%,
+    transparent
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    width: 7px;
+    height: 100%;
+    background-size: 100% 20px;
+    animation: moveDots 3s linear infinite;
+  );
 }
 
 @keyframes moveDots {
@@ -1292,8 +1301,9 @@
   justify-content: center;
   font-size: 1.4rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--primary-color);
+  color: #000;
 }
 
 /* Icon hover */
@@ -1309,8 +1319,46 @@
   top: -10px;
   right: -10px;
   font-size: 0.8rem;
-  color: #FFD700;
   animation: floatStar 2s ease-in-out infinite alternate;
+  color: var(--accent-color);
+}
+/* Cards & Glass Elements */
+.glass-card, .service-card, .portfolio-card, .testimonial-card {
+  border: 1px solid rgba(0, 174, 254, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+.glass-card:hover, .service-card:hover, .portfolio-card:hover, .testimonial-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 20px 60px rgba(0, 174, 254, 0.3);
+}
+
+/* Accent Text */
+.about-highlight, .about-accent, .node-card h4 {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+    /* Tech Belt Items */
+.tech-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 25px rgba(0, 174, 254, 0.35);
+}
+
+/* Contact Icons */
+.contact-info-icon {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+}
+.social-link:hover {
+  background: var(--primary-color);
+  color: #000;
+  box-shadow: 0 10px 20px rgba(0,174,254,0.4);
+}
+
+/* Floating Elements & Glow Effects */
+#hero::before, .process-art::before, .process-core, .node-card::after {
+  background: radial-gradient(circle, rgba(0,174,254,0.15) 0%, transparent 70%);
 }
 
 @keyframes floatStar {
@@ -1331,9 +1379,9 @@
 }
 
 .timeline-item .timeline-content h3 {
-  color: #6C63FF; 
   font-size: 1.25rem;
   margin-bottom: 8px;
+  color: var(--primary-color);
 }
 
 .timeline-item .timeline-content p {
