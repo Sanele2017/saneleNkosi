@@ -1243,6 +1243,40 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
 }
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.case-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.case-card > div {
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  background: #fff;
+  min-height: 200px;
+}
+
+.case-card .case-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.case-card:hover .case-front {
+  transform: rotateY(180deg);
+}
+
+.case-card:hover .case-back {
+  transform: rotateY(0);
+}
 
     /* Contact Section */
     .contact-grid {
@@ -1800,91 +1834,53 @@
 </section>
   
   <!-- Portfolio Section -->
-  <section id="portfolio">
+  <section id="case-studies">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
       <h2>Case Studies</h2>
-      <p>How we solve real operational and infrastructure challenges</p>
+      <p>How we solve real-world IT and infrastructure challenges</p>
     </div>
-    
-    <div class="portfolio-grid">
 
-      <!-- Case Study 1 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=400&fit=crop" alt="Managed IT Support" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Managed IT Support</span>
+    <div class="case-grid">
+
+      <!-- Card 1 -->
+      <div class="case-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="case-front">
           <h3>Proactive IT Operations</h3>
-          <p><strong>Problem:</strong> Unstable systems, delayed response to IT issues, and lack of visibility.</p>
-          <p><strong>Solution:</strong> Implemented remote IT support, proactive monitoring, patch management, and structured incident response.</p>
-          <p><strong>Outcome:</strong> Improved system reliability, faster issue resolution, and predictable IT operations.</p>
+          <p>Challenge: Frequent system downtime and delayed IT support.</p>
+        </div>
+        <div class="case-back">
+          <p><strong>Approach:</strong> Implemented remote monitoring, patch management, and incident response.</p>
+          <p><strong>Impact:</strong> Reduced downtime, faster issue resolution, and predictable operations.</p>
         </div>
       </div>
 
-      <!-- Case Study 2 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=400&fit=crop" alt="Linux Infrastructure" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Infrastructure & Linux</span>
+      <!-- Card 2 -->
+      <div class="case-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="case-front">
           <h3>Secure Linux Server Deployment</h3>
-          <p><strong>Problem:</strong> Legacy server setups with inconsistent security and no standard configuration.</p>
-          <p><strong>Solution:</strong> Designed and deployed hardened Linux servers with monitoring, documentation, and handover.</p>
-          <p><strong>Outcome:</strong> Standardized, secure infrastructure that is easier to manage and scale.</p>
+          <p>Challenge: Legacy servers with inconsistent security and no standards.</p>
+        </div>
+        <div class="case-back">
+          <p><strong>Approach:</strong> Designed and deployed hardened Linux servers with monitoring and documentation.</p>
+          <p><strong>Impact:</strong> Standardized, secure infrastructure ready to scale.</p>
         </div>
       </div>
 
-      <!-- Case Study 3 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=400&fit=crop" alt="Monitoring and Alerting" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Monitoring & Alerting</span>
-          <h3>Infrastructure Visibility & Alerting</h3>
-          <p><strong>Problem:</strong> Issues were only detected after systems failed or users complained.</p>
-          <p><strong>Solution:</strong> Implemented monitoring and alerting using Zabbix and Prometheus.</p>
-          <p><strong>Outcome:</strong> Early issue detection, reduced downtime, and improved response times.</p>
+      <!-- Card 3 -->
+      <div class="case-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="case-front">
+          <h3>Monitoring & Alerting Setup</h3>
+          <p>Challenge: Issues only detected after system failures.</p>
+        </div>
+        <div class="case-back">
+          <p><strong>Approach:</strong> Deployed Zabbix & Prometheus for proactive alerts.</p>
+          <p><strong>Impact:</strong> Early issue detection, reduced downtime, improved response times.</p>
         </div>
       </div>
-
-      <!-- Case Study 4 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=400&fit=crop" alt="Virtualization" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Virtualization</span>
-          <h3>KVM & VMware Virtual Platforms</h3>
-          <p><strong>Problem:</strong> Underutilized hardware and difficult-to-scale physical servers.</p>
-          <p><strong>Solution:</strong> Designed and deployed KVM and VMware virtualized environments.</p>
-          <p><strong>Outcome:</strong> Better resource utilization, easier scaling, and simplified management.</p>
-        </div>
-      </div>
-
-      <!-- Case Study 5 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="500">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=400&fit=crop" alt="Web Systems Development" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Web & Systems Development</span>
-          <h3>Internal Business Systems</h3>
-          <p><strong>Problem:</strong> Manual processes and disconnected tools slowing daily operations.</p>
-          <p><strong>Solution:</strong> Built internal systems, dashboards, and API integrations aligned to workflows.</p>
-          <p><strong>Outcome:</strong> Streamlined operations and improved internal efficiency.</p>
-        </div>
-      </div>
-
-      <!-- Case Study 6 -->
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="600">
-        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=400&fit=crop" alt="Automation" class="portfolio-card-image" />
-        <div class="portfolio-overlay">
-          <span class="portfolio-tag">Automation & Operations</span>
-          <h3>Infrastructure Automation</h3>
-          <p><strong>Problem:</strong> Manual configurations leading to inconsistencies and human error.</p>
-          <p><strong>Solution:</strong> Introduced automation and configuration management for infrastructure tasks.</p>
-          <p><strong>Outcome:</strong> Consistent deployments, reduced risk, and faster operational changes.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
-
 
   <!-- Testimonials Section 
   <section id="testimonials">
